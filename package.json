@@ -1,0 +1,28 @@
+{
+  "name": "animechine-api",
+  "version": "0.0.1",
+  "description": "Super Alpha Animechine Merch Store",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaaronmartin/animechine.git"
+  },
+  "author": "Aaron Martin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theaaronmartin/animechine/issues"
+  },
+  "homepage": "https://github.com/theaaronmartin/animechine#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "install": "^0.8.1",
+    "mongoose": "^4.5.8",
+    "morgan": "^1.7.0",
+    "npm": "^3.10.5",
+    "passport": "^0.3.2"
+  }
+}
