@@ -5,10 +5,12 @@ const router = express.Router();
 
 router.post('/', function (req, res) {
   var admin = new Admin(req.body);
+  console.log(req.body);
 
   admin.save((function(err) {
       if (err) {
-        res.json(422, err);
+        console.log(err);
+        res.status(422).json(err);
         return;
       }
 

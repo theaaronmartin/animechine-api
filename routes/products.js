@@ -8,7 +8,7 @@ router.post('/', function (req, res) {
 
   product.save((function(err) {
       if (err) {
-        res.json(422, err);
+        res.status(422).json(err);
         return;
       }
 
