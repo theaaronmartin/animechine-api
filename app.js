@@ -39,19 +39,17 @@ app.use(bodyParser.json());
 //   });
 // }));
 
-app.use('/products', (function(req, res, next) {
-  Admin.findById(req.get('Authorization'), function(err, admin) {
-    // If admin doesn't exist, respond with Unauthorized
-    if (err || admin === null) {
-      res.status(401).send('You must be logged in to view this page');
-      return;
-    }
-
-    // Else add user to req.admin and go to next route
-    req.admin = admin;
-    next();
-  });
-}));
+// app.use('/products', (function(req, res, next) {
+//   Admin.findById(req.get('Authorization'), function(err, admin) {
+//     if (err || admin === null) {
+//       res.status(401).send('You must be logged in to view this page');
+//       return;
+//     }
+//
+//     req.admin = admin;
+//     next();
+//   });
+// }));
 
 
 // MAKE A NEW ADMIN IF NONE
