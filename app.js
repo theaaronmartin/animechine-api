@@ -26,37 +26,6 @@ app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 
-
-
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     Admin.findOne({ username: username }, function (err, admin) {
-//       if (err) { return done(err); }
-//       if (!admin) { return done(null, false); }
-//       if (!admin.verifyPassword(password)) { return done(null, false); }
-//       return done(null, admin);
-//     });
-//   }
-// ));
-//
-// app.post('/login',
-//   passport.authenticate('local', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     res.redirect('/');
-//   });
-
-// file:app/authentication/middleware.js
-// function authenticationMiddleware () {
-//   return function (req, res, next) {
-//     if (req.isAuthenticated()) {
-//       return next();
-//     }
-//     res.redirect('/');
-//   };
-// }
-
-// app.get('/admins', passport.authenticationMiddleware(), renderProfile);
-
 // app.use('/admins', (function(req, res, next) {
 //   Admin.findById(req.get('Authorization'), function(err, admin) {
 //
