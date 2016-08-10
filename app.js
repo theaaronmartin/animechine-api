@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/admins', require('./routes/admins'));
 app.use('/products', require('./routes/products'));
-app.use('/cart', require('./routes/carts'));
+app.use('/carts', require('./routes/carts'));
 
 // Run Application
 app.listen(3002, function () {
