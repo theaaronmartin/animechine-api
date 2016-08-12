@@ -13,6 +13,9 @@ const Admin = require('./models/admin');
 // Database
 mongoose.connect('mongodb://localhost/animechine-api');
 
+// Have Mongoose use the ES6's built in promises
+mongoose.Promise = global.Promise;
+
 const db = mongoose.connection;
 db.on('error', function(err) {
   console.error(err);

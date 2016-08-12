@@ -1,20 +1,55 @@
 const express = require('express'),
           Cart = require('../models/cart');
+          Product = require('../models/product');
 
 const router = express.Router();
 
-router.post('/', function (req, res) {
-  var cart = new Cart(req.body);
-  console.log(req.body);
+function addCartItem(req, res, cart) {
+  function onProductFound(product) {
+    function onError(err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
 
-  cart.save((function(err) {
-      if (err) {
-        res.status(422).json(err);
-        return;
+    function onCartAdded(cart) {
+      res.json(cart);
+    }
+
+    cart.addItem(req.body.quantity, product)
+      .then(onCartAdded)
+      .catch(onError);
       }
 
-      res.json(cart);
-    }));
+    Product.findById(req.body.productId, function(err, product) {
+      if (err || !product ) {
+          res.status(404).send('Not found');
+          return;
+      }
+
+      onProductFound(product);
+    });
+}
+router.post('/', function (req, res) {
+  var cart = new Cart();
+
+  addCartItem(req, res, cart);
+});
+
+router.post('/:cartId/items', function(req, res) {
+  function onCartFound(cart) {
+    addCartItem(req, res, cart);
+  }
+
+  function onCartFinding(err, cart) {
+    if (err || !cart ) {
+        res.status(404).send('Not found');
+        return;
+    }
+
+    onCartFound(cart);
+  }
+
+  Cart.findById(req.params.cartId, onCartFinding);
 });
 
 router.get('/', function (req, res) {
